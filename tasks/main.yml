@@ -1,62 +1,45 @@
-- name: "Install ufw"
+---
+- name: "install ufw"
   apt:
     package: ufw
     update_cache: yes
     state: present
+    cache_valid_time: "{{ apt_cache_valid_time }}"
   tags:
-    - apt
     - firewall
-    - network
 
-- name: "Allow logging"
+- name: "enable logging"
   ufw:
-    logging: 'on'
+    logging: "{{ firewall_enable_log }}"
   tags:
     - firewall
-    - network
 
-- name: "Allow ssh connections"
+- name: "allow ssh connections"
   ufw:
     rule: allow
     port: ssh
   tags:
     - firewall
-    - network
 
-- name: "Allow various connections"
+- name: "allow various connections"
   ufw:
     rule: allow
     port: "{{ item }}"
-  with_items: '{{ allowed_ports }}'
+  with_items: "{{ firewall_allowed_ports }}"
   tags:
     - firewall
-    - network
 
-- name: "Allow incoming access from speciefied ips"
+- name: "allow incoming access from ip"
   ufw:
     rule: allow
-    from_ip: "{{ hostvars[item].specified_ip }}"
-  with_items: '{{ groups.all }}'
+    from_ip: "{{ item }}"
+  with_items: "{{ firewall_allowed_hosts }}"
   tags:
     - firewall
-    - network
 
-- name: "Deny all other connections and enable firewall"
+- name: "deny all other connections and enable firewall"
   ufw:
     state: enabled
     policy: deny
   tags:
     - firewall
-    - network
-
-- name: "Log only to ufw.log"
-  template:
-    src: "20-ufw.conf.j2"
-    dest: "/etc/rsyslog.d/20-ufw.conf"
-    mode: 0644
-    owner: root
-    group: root
-  notify: restart rsyslog
-  tags:
-    - firewall
-    - network

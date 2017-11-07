@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+    - role: firewall
+      firewall_allowed_ports:
+        - 443
+        - ftp
+      firewall_allowed_hosts:
+        - '{{ groups["all"] | map("extract", hostvars, ["network_private_ip"]) | list }}'

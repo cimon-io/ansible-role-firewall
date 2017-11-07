@@ -1,11 +1,9 @@
 galaxy_info:
   author: Alexey Osipenko
-  description: install and configure ufw
+  description: Install and configure UFW
   company: Cimon.io
   license: MIT
-
   min_ansible_version: 2.0.0
-
   platforms:
     - name: Ubuntu
       versions:
@@ -14,6 +12,7 @@ galaxy_info:
       versions:
       - all
 
-  galaxy_tags: []
+  galaxy_tags:
+    - firewall
 
 dependencies: []
