@@ -14,5 +14,7 @@ galaxy_info:
 
   galaxy_tags:
     - firewall
+    - ufw
+    - system
 
 dependencies: []
