@@ -43,6 +43,7 @@
 - name: "deny all other connections and enable firewall"
   ufw:
     state: enabled
+    direction: incoming
     policy: deny
   tags:
     - firewall
