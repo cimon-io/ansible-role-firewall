@@ -1,4 +1,5 @@
 ---
 firewall_allowed_ports: []
 firewall_allowed_hosts: []
-firewall_enable_log: True
+firewall_logging: "low"
+

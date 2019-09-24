@@ -4,7 +4,7 @@ An ansible role that installs and configures a firewall with UFW.
 
 The role includes the following tasks:
 1. Install UFW.
-2. Enable logging if it is required by the `firewall_enable_log` variable.
+2. Enable logging if it is required by the `firewall_logging` variable.
 3. Allow SSH connections.
 4. Allow connections specified by the `firewall_allowed_ports` variable.
 5. Allow incoming access from IP addresses specified by the `firewall_allowed_hosts` variable.
@@ -23,7 +23,7 @@ Available variables are listed below, along with default values (see `defaults/m
 ```yaml
 firewall_allowed_ports: []    # List of allowed ports
 firewall_allowed_hosts: []    # List of allowed hosts
-firewall_enable_log: True     # Enable/disable logging
+firewall_logging: "low"       # Toggle logging
 ```
 
 The rest of the variables can be found at `vars/main.yml`:

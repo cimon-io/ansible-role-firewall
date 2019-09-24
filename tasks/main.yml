@@ -13,7 +13,7 @@
 
 - name: "enable logging"
   ufw:
-    logging: "{{ firewall_enable_log }}"
+    logging: "{{ firewall_logging }}"
   tags:
     - firewall
 
