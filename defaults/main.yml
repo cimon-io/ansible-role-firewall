@@ -3,3 +3,12 @@ firewall_allowed_ports: []
 firewall_allowed_hosts: []
 firewall_logging: "low"
 
+firewall_custom_rules: []
+# - direction: omit
+#   from_ip: 'any'
+#   from_port: omit
+#   interface: omit
+#   proto: omit
+#   rule: omit
+#   to_ip: 'any'
+#   to_port: omit

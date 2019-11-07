@@ -40,6 +40,20 @@
   tags:
     - firewall
 
+- name: "custom rules"
+  ufw:
+    rule: "{{ item.rule | default(omit) }}"
+    direction: "{{ item.direction | default(omit) }}"
+    from_ip: "{{ item.from_ip | default('any') }}"
+    from_port: "{{ item.from_port | default(omit) }}"
+    interface:  "{{ item.interface | default(omit) }}"
+    proto: "{{ item.proto | default(omit) }}"
+    to_ip: "{{ item.to_ip | default('any') }}"
+    to_port: "{{ item.to_port | default(omit) }}"
+  with_items: "{{ firewall_custom_rules }}"
+  tags:
+    - firewall
+
 - name: "deny all other connections and enable firewall"
   ufw:
     state: enabled
