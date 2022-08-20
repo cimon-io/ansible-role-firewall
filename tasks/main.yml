@@ -17,6 +17,11 @@
   tags:
     - firewall
 
+- name: "reset UFW rules"
+  ufw:
+    state: reset
+  when: firewall_reload_rules
+
 - name: "allow ssh connections"
   ufw:
     rule: allow

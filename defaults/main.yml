@@ -3,6 +3,8 @@ firewall_allowed_ports: []
 firewall_allowed_hosts: []
 firewall_logging: "low"
 
+firewall_reload_rules: True
+
 firewall_custom_rules: []
 # - direction: omit
 #   from_ip: 'any'
